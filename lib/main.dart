@@ -103,40 +103,116 @@
 //   }
 // }
 
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+//_____________________________________THIS________________________
+// import 'package:flutter/material.dart';
+// import 'package:provider/provider.dart';
 
+// import './screens/tabs_screen.dart';
+// import './providers/chats_provider.dart';
+// import './providers/models_provider.dart';
+
+// void main() {
+//   runApp(MyApp());
+// }
+
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MultiProvider(
+//       providers: [
+//         ChangeNotifierProvider(
+//           create: (_) => ChatProvider(),
+//         ),
+//         ChangeNotifierProvider(
+//           create: (_) => ModelsProvider(),
+//         ),
+//       ],
+//       child: MaterialApp(
+//         title: 'Recipe And Meals',
+//         debugShowCheckedModeBanner: false,
+//       //   theme: ThemeData(
+//       //   primarySwatch: Colors.pink,
+//       //   accentColor: Colors.amber,
+//       //   canvasColor: Color.fromRGBO(255, 254, 229, 1),
+//       //   fontFamily: 'Raleway',
+//       // ),
+//         home: TabsScreen(),
+//       ),
+//     );
+//   }
+// }
+
+// //________________________________________OR THIS_________________
+// import 'package:chatgpt_course/screens/tabs_screen.dart';
+// import 'package:flutter/material.dart';
+// import 'package:flutter/services.dart';
+// import 'package:flutter_riverpod/flutter_riverpod.dart';
+// import '../screens/nav_screen.dart';
+
+// void main() {
+//   runApp(const ProviderScope(child: MyApp()));
+// }
+
+// class MyApp extends StatelessWidget {
+//   const MyApp({Key? key}) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+//     return MaterialApp(
+//       title: "My Youtube App",
+//       debugShowCheckedModeBanner: false,
+//       theme: ThemeData(
+//         brightness: Brightness.dark,
+//         bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+//           selectedItemColor: Colors.white,
+//         ),
+//       ),
+//       home: TabsScreen(),
+//     );
+//   }
+// }
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart' as riverpod;
+import 'package:provider/provider.dart';
+import 'package:provider/provider.dart' as provider;
 import './screens/tabs_screen.dart';
 import './providers/chats_provider.dart';
 import './providers/models_provider.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(
+    riverpod.ProviderScope(
+      child: MultiProvider(
+        providers: [
+          provider.ChangeNotifierProvider(
+            create: (_) => ChatProvider(),
+          ),
+          provider.ChangeNotifierProvider(
+            create: (_) => ModelsProvider(),
+          ),
+        ],
+        child: MyApp(),
+      ),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(
-          create: (_) => ChatProvider(),
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+    return MaterialApp(
+      title: 'Recipe And Meals',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        brightness: Brightness.dark,
+        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+          selectedItemColor: Colors.white,
         ),
-        ChangeNotifierProvider(
-          create: (_) => ModelsProvider(),
-        ),
-      ],
-      child: MaterialApp(
-        title: 'Flutter ChatBOT',
-        debugShowCheckedModeBanner: false,
-      //   theme: ThemeData(
-      //   primarySwatch: Colors.pink,
-      //   accentColor: Colors.amber,
-      //   canvasColor: Color.fromRGBO(255, 254, 229, 1),
-      //   fontFamily: 'Raleway',
-      // ),
-        home: TabsScreen(),
       ),
+      home: TabsScreen(),
     );
   }
 }

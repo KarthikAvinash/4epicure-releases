@@ -1,7 +1,7 @@
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:pie_chart/pie_chart.dart';
-
+import '../globals.dart';
 Widget getPieChart(BuildContext context, Map<String, dynamic> dataMap) {
   final doubleDataMap =
       dataMap.map((key, value) => MapEntry(key, value.toDouble()));

@@ -84,16 +84,19 @@
 //     );
 //   }
 // }
+import 'package:chatgpt_course/screens/nav_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/models_provider.dart';
 import 'chat_screen.dart';
 import 'grocery_screen.dart';
 import 'recipe_with_pie_chart.dart';
+
 import '../models/meal.dart';
 import '../screens/categories_screen.dart';
 import '../screens/favourites_screen.dart';
 import '../widgets/main_drawer.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class TabsScreen extends StatefulWidget {
   @override
@@ -123,6 +126,10 @@ class _TabsScreenState extends State<TabsScreen> {
       {
         'page': GroceryScreen(),
         'title': 'My Groceries',
+      },
+      {
+        'page': NavScreen(),
+        'title': 'Youtube screen',
       }
     ];
     super.initState();
@@ -158,7 +165,6 @@ class _TabsScreenState extends State<TabsScreen> {
               ),
               label: 'Recipes',
             ),
-            
             BottomNavigationBarItem(
               icon: Icon(Icons.star),
               activeIcon: Icon(
@@ -172,6 +178,13 @@ class _TabsScreenState extends State<TabsScreen> {
                 Icons.shopping_cart,
               ),
               label: 'My Groceries',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.play_circle_filled),
+              activeIcon: Icon(
+                Icons.play_circle_filled,
+              ),
+              label: 'youtube',
             ),
           ],
         ),

@@ -116,7 +116,7 @@ import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:shimmer/shimmer.dart';
-
+import '../globals.dart';
 import '../widgets/pie_graph.dart';
 
 class MyFlipCard extends StatefulWidget {
@@ -128,7 +128,7 @@ class MyFlipCard extends StatefulWidget {
 
 class _MyFlipCardState extends State<MyFlipCard> {
   // sample data received from backend
-  final List<String> sampleData = ['Card 1', 'Card 2', 'Card 3'];
+
   List<Map<String, dynamic>> recipes = [];
   bool isLoading = true;
 
@@ -184,6 +184,17 @@ class _MyFlipCardState extends State<MyFlipCard> {
     final sWidth = MediaQuery.of(context).size.width;
 
     return MaterialApp(
+      theme: isLight? ThemeData(
+        brightness: Brightness.light,
+        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+          selectedItemColor: Colors.white,
+        ),
+      ): ThemeData(
+        brightness: Brightness.dark,
+        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+          selectedItemColor: Colors.white,
+        ),
+      ),
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
@@ -206,21 +217,21 @@ class _MyFlipCardState extends State<MyFlipCard> {
                           Container(
                             width: double.infinity,
                             height: 240,
-                            color: Colors.white,
+                            color: Colors.black45,
                           ),
                           SizedBox(height: 16),
                           Container(
                             width: double.infinity,
                             height: 16,
                             margin: EdgeInsets.symmetric(horizontal: 16),
-                            color: Colors.blue,
+                            color: Colors.black45,
                           ),
                           SizedBox(height: 8),
                           Container(
                             width: double.infinity,
                             height: 12,
                             margin: EdgeInsets.symmetric(horizontal: 16),
-                            color: Colors.black,
+                            color: Colors.black45,
                           ),
                           SizedBox(height: 16),
                         ],
@@ -243,17 +254,14 @@ class _MyFlipCardState extends State<MyFlipCard> {
                           width: sWidth * 0.9,
                           height: sHeight * 0.4,
                           decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: card_color,
                             borderRadius: BorderRadius.circular(16.0),
-                            border: Border.all(
-                              color: Colors.grey[300]!,
-                              width: 1.0,
-                            ),
+                            border: border_color,
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.grey.withOpacity(0.5),
-                                spreadRadius: 2,
-                                blurRadius: 5,
+                                color: Colors.black.withOpacity(0.5),
+                                spreadRadius: 4,
+                                blurRadius: 7,
                                 offset:
                                     Offset(0, 3), // changes position of shadow
                               ),
@@ -286,6 +294,8 @@ class _MyFlipCardState extends State<MyFlipCard> {
                                     fontSize: 24.0,
                                     fontWeight: FontWeight.bold,
                                     fontFamily: 'Roboto',
+                                    color: Colors
+                                        .black54, // Change the text color here
                                   ),
                                 ),
                               ),
@@ -311,6 +321,7 @@ class _MyFlipCardState extends State<MyFlipCard> {
                                           style: TextStyle(
                                             fontSize: 20.0,
                                             fontFamily: 'Roboto',
+                                            color: Colors.black54,
                                           ),
                                         ),
                                       ],
@@ -329,6 +340,7 @@ class _MyFlipCardState extends State<MyFlipCard> {
                                           style: TextStyle(
                                             fontSize: 20.0,
                                             fontFamily: 'Roboto',
+                                            color: Colors.black54,
                                           ),
                                         ),
                                       ],
@@ -342,17 +354,15 @@ class _MyFlipCardState extends State<MyFlipCard> {
                       ),
                       // back of the card
                       back: Padding(
+                        
                         padding: const EdgeInsets.all(8.0),
                         child: Container(
                           width: sWidth * 0.9,
                           height: sHeight * 0.4,
                           decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: card_color,
                             borderRadius: BorderRadius.circular(16.0),
-                            border: Border.all(
-                              color: Colors.grey[300]!,
-                              width: 1.0,
-                            ),
+                            border: border_color,
                             boxShadow: [
                               BoxShadow(
                                 color: Colors.grey.withOpacity(0.5),
@@ -384,6 +394,7 @@ class _MyFlipCardState extends State<MyFlipCard> {
                                   style: TextStyle(
                                     fontSize: 20.0,
                                     fontFamily: 'Roboto',
+                                    color: Colors.black54,
                                   ),
                                 ),
                               ),
@@ -394,13 +405,11 @@ class _MyFlipCardState extends State<MyFlipCard> {
                                   onPressed: () {
                                     print(recipes[index]['steps_with_images']
                                         .runtimeType);
-
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
                                         // fullscreenDialog: true,
                                         builder: (context) => RecipePage(
-                                          
                                             recipeName: recipes[index]['title'],
                                             description: recipes[index]
                                                 ['description'],
@@ -413,7 +422,14 @@ class _MyFlipCardState extends State<MyFlipCard> {
                                       ),
                                     );
                                   },
-                                  child: Text('View Recipe'),
+                                  child: Text(
+                                    'View Recipe',
+                                    style: TextStyle(
+                                      fontSize: 20.0,
+                                      fontFamily: 'Roboto',
+                                      color: Colors.black54,
+                                    ),
+                                  ),
                                 ),
                               ),
                             ],
