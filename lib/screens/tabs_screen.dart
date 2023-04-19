@@ -91,7 +91,7 @@ import '../providers/models_provider.dart';
 import 'chat_screen.dart';
 import 'grocery_screen.dart';
 import 'recipe_with_pie_chart.dart';
-
+import '../globals.dart';
 import '../models/meal.dart';
 import '../screens/categories_screen.dart';
 import '../screens/favourites_screen.dart';
@@ -159,28 +159,28 @@ class _TabsScreenState extends State<TabsScreen> {
           // fixedColor: Colors.amber, // added this line
           items: [
             BottomNavigationBarItem(
-              icon: Icon(Icons.local_dining),
+              icon: Icon(Icons.local_dining_outlined),
               activeIcon: Icon(
                 Icons.local_dining,
               ),
               label: 'Recipes',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.star),
+              icon: Icon(Icons.school_outlined),
               activeIcon: Icon(
-                Icons.star,
+                Icons.school,
               ),
               label: 'Recipe Sage',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.shopping_cart),
+              icon: Icon(Icons.shopping_cart_outlined),
               activeIcon: Icon(
                 Icons.shopping_cart,
               ),
               label: 'My Groceries',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.play_circle_filled),
+              icon: Icon(Icons.play_circle_outline_outlined),
               activeIcon: Icon(
                 Icons.play_circle_filled,
               ),

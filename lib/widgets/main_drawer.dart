@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../screens/filters_screen.dart';
+import '../screens/contact_us.dart';
 
 class MainDrawer extends StatelessWidget {
   Widget buildListTile(String title, IconData icon, VoidCallback tapHandler) {
@@ -43,17 +44,22 @@ class MainDrawer extends StatelessWidget {
             height: 20,
           ),
           buildListTile(
-            'Meals',
+            'Recipes',
             Icons.restaurant,
             () {
               Navigator.of(context).pushReplacementNamed('/');
             },
           ),
           buildListTile(
-            'Filters',
+            'Contact Us',
             Icons.settings,
             () {
-              Navigator.of(context).pushReplacementNamed(FilterScreen.routeName);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (BuildContext context) => ContactPage(),
+                ),
+              );
             },
           ),
         ],

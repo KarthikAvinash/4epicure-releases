@@ -180,7 +180,8 @@ import 'package:provider/provider.dart' as provider;
 import './screens/tabs_screen.dart';
 import './providers/chats_provider.dart';
 import './providers/models_provider.dart';
-
+import './screens/contact_us.dart';
+import './screens/chat_screen.dart';
 void main() {
   runApp(
     riverpod.ProviderScope(
@@ -213,6 +214,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       home: TabsScreen(),
+      // home: ChatScreen(),
     );
   }
 }
