@@ -28,3 +28,15 @@ jobs:
           tag: v1.0.${{ github.run_number }}
           token: ${{ secrets.TOKEN }}
           releaseName: "Release ${{ github.run_number }}"
+      - name: Send email notification
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: imap.gmail.com'
+          server_port: 587
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
+          subject: Build successful
+          body: 'The build was successful. Here is the built APK file as an attachment.'
+          from: 'KARTHIK AVINASH IIIT Dharwad <21bcs052@iiitdwd.ac.in>'
+          to: 'karthikavinash01@gmail.com'
+          attachments: 'build/app/outputs/apk/release/*'
