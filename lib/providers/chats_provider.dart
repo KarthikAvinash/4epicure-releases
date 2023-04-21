@@ -123,23 +123,24 @@ class ChatProvider with ChangeNotifier {
   //   }
   // } // WORKING CORRECTLY
   Future<bool> isRelatedToRecipes(String message) async {
-  final url = Uri.parse('http://10.0.0.231:8000/is_related_to_recipes_flutter');
-  
-  try {
-    final response = await http.post(url, body: jsonEncode({'message': message}));
-    
-    if (response.statusCode == 200) {
-      final result = jsonDecode(response.body);
-      print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@${result['result']}");
-      return result['result'];
-    } else {
-      throw Exception('Failed to call is_related_to_recipes_flutter endpoint');
-    }
-  } catch (e) {
-    print("Error calling API: $e");
-    return true; // Return true if there is an error calling the API
-  }
-  
-}
+    final url =
+        Uri.parse('http://10.0.0.231:8000/is_related_to_recipes_flutter');
 
+    try {
+      final response =
+          await http.post(url, body: jsonEncode({'message': message}));
+
+      if (response.statusCode == 200) {
+        final result = jsonDecode(response.body);
+        print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@${result['result']}");
+        return result['result'];
+      } else {
+        throw Exception(
+            'Failed to call is_related_to_recipes_flutter endpoint');
+      }
+    } catch (e) {
+      print("Error calling API: $e");
+      return true; // Return true if there is an error calling the API
+    }
+  }
 }

@@ -172,6 +172,11 @@
 //     );
 //   }
 // }
+import 'package:chatgpt_course/auth_screens/signIn.dart';
+import 'package:chatgpt_course/auth_screens/signUp.dart';
+import 'package:chatgpt_course/screens/about_us_screen.dart';
+import 'package:chatgpt_course/screens/grocery_screen.dart';
+import 'package:chatgpt_course/screens/recipe_with_pie_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart' as riverpod;
@@ -180,8 +185,9 @@ import 'package:provider/provider.dart' as provider;
 import './screens/tabs_screen.dart';
 import './providers/chats_provider.dart';
 import './providers/models_provider.dart';
-import './screens/contact_us.dart';
-import './screens/chat_screen.dart';
+import 'main_splash.dart';
+import 'package:chatgpt_course/screens/get_nutrients_screen.dart';
+
 void main() {
   runApp(
     riverpod.ProviderScope(
@@ -210,11 +216,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         brightness: Brightness.dark,
         bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-          selectedItemColor: Colors.white,
+          selectedItemColor: Colors.amber,
         ),
       ),
-      home: TabsScreen(),
-      // home: ChatScreen(),
+      home:const SignupScreen(),
+      // home: SplashScreen(),
+      // home: ShakeToNavigate(),
+      // home:getNutrientsScreen(),
+      // home: AboutUsScreen(),
     );
   }
 }
