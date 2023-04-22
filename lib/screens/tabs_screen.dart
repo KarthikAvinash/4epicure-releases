@@ -13,6 +13,113 @@ import '../screens/categories_screen.dart';
 import '../screens/favourites_screen.dart';
 import '../widgets/main_drawer.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+
+// class TabsScreen extends StatefulWidget {
+//   @override
+//   State<TabsScreen> createState() => _TabsScreenState();
+// }
+
+// class _TabsScreenState extends State<TabsScreen> {
+//   List<Map<String, Object>> _pages = [];
+//   int _selectedPageIndex = 0;
+
+//   void _selectPage(int index) {
+//     setState(() {
+//       _selectedPageIndex = index;
+//     });
+//   }
+
+//   void initState() {
+//     _pages = [
+//       {
+//         'page': MyFlipCard(),
+//         'title': 'Dont display this in app bar',
+//       },
+//       {
+//         'page': ChatScreen(),
+//         'title': 'Recipe Sage',
+//       },
+//       {
+//         'page': CreateRecipeScreen(),
+//         'title': 'Add recipe',
+//       },
+//       {
+//         'page': GroceryScreen(),
+//         'title': 'My Groceries',
+//       },
+//       {
+//         'page': NavScreen(),
+//         'title': 'Youtube screen',
+//       }
+//     ];
+//     super.initState();
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return MultiProvider(
+//       providers: [
+//         ChangeNotifierProvider(create: (_) => ModelsProvider()),
+//       ],
+//       child: Scaffold(
+//         appBar: _selectedPageIndex == 0 || _selectedPageIndex == 1
+//             ? null
+//             : AppBar(
+//                 title: Text(_pages[_selectedPageIndex]['title'] as String),
+//               ),
+//         drawer: MyDrawer(),
+//         body: _pages[_selectedPageIndex]['page'] as Widget,
+//         bottomNavigationBar: BottomNavigationBar(
+//           onTap: _selectPage,
+//           backgroundColor: Theme.of(context).primaryColor,
+//           unselectedItemColor: Colors.black,
+//           selectedItemColor: Theme.of(context).accentColor,
+//           currentIndex: _selectedPageIndex,
+//           type: BottomNavigationBarType.shifting,
+//           // fixedColor: Colors.amber, // added this line
+//           items: [
+//             BottomNavigationBarItem(
+//               icon: Icon(Icons.local_dining),
+//               activeIcon: Icon(
+//                 Icons.local_dining,
+//               ),
+//               label: 'Recipes',
+//             ),
+//             BottomNavigationBarItem(
+//               icon: Icon(Icons.star),
+//               activeIcon: Icon(
+//                 Icons.star,
+//               ),
+//               label: 'Recipe Sage',
+//             ),
+//             BottomNavigationBarItem(
+//               icon: Icon(Icons.add_circle_outline),
+//               activeIcon: Icon(
+//                 Icons.add_circle,
+//               ),
+//               label: 'add post',
+//             ),
+//             BottomNavigationBarItem(
+//               icon: Icon(Icons.shopping_cart),
+//               activeIcon: Icon(
+//                 Icons.shopping_cart,
+//               ),
+//               label: 'My Groceries',
+//             ),
+//             BottomNavigationBarItem(
+//               icon: Icon(Icons.play_circle_filled),
+//               activeIcon: Icon(
+//                 Icons.play_circle_filled,
+//               ),
+//               label: 'youtube',
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
+
 //________________NEW___________
 import 'package:flutter/material.dart';
 import 'package:sensors/sensors.dart';
@@ -75,7 +182,6 @@ class _ShakeToNavigateState extends State<ShakeToNavigate> {
       appBar: _selectedPageIndex == 0
           ? AppBar(
               title: Text('Recipes'),
-              
             )
           : null,
       body: [

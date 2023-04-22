@@ -216,11 +216,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         brightness: Brightness.dark,
         bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-          selectedItemColor: Colors.amber,
+          selectedItemColor: Colors.white,
         ),
       ),
-      home:const SignupScreen(),
-      // home: SplashScreen(),
+      // home:const SignupScreen(),
+      home: SplashScreen(),
       // home: ShakeToNavigate(),
       // home:getNutrientsScreen(),
       // home: AboutUsScreen(),
